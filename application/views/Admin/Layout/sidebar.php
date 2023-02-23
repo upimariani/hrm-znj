@@ -59,6 +59,13 @@
                         </a>
                     </li>
                     <li>
+                        <a href="<?= base_url('Admin/cPenggajian') ?>" class="dropdown-toggle no-arrow <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPenggajian') {
+                                                                                                            echo 'active';
+                                                                                                        }  ?>">
+                            <span class="fa fa-tag"></span><span class="mtext">Penggajian Karyawan</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?= base_url('cLogin/logout_user') ?>" class="dropdown-toggle no-arrow">
                             <span class="fa fa-sign-out"></span><span class="mtext">Logout</span>
                         </a>

@@ -5,12 +5,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Informasi Karyawan ZNJ Bakery</h4>
+                            <h4>Informasi Penggajian Karyawan ZNJ Bakery</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Karyawan</li>
+                                <li class="breadcrumb-item active" aria-current="page">Penggajian</li>
                             </ol>
                         </nav>
                         <?php
@@ -36,36 +36,29 @@
                         <table class="data-table stripe hover nowrap">
                             <thead>
                                 <tr>
-                                    <th class="table-plus datatable-nosort">Foto</th>
+                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Tempat Tanggal Lahir</th>
-                                    <th>Alamat</th>
-                                    <th>No Telepon</th>
-                                    <th>Agama</th>
                                     <th>Divisi</th>
                                     <th>Jabatan</th>
-                                    <th>Mulai Awal Bekerja</th>
                                     <th class="datatable-nosort">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                $no = 1;
                                 foreach ($karyawan as $key => $value) {
                                 ?>
                                     <tr>
-                                        <td> <img style="width: 100px;" src="<?= base_url('asset/foto/' . $value->foto) ?>" alt="" class="avatar-photo"></td>
-                                        <td class="table-plus"><?= $value->nama_lengkap ?></td>
+                                        <td><?= $no++ ?></td>
+                                        <td><?= $value->nama_lengkap ?></td>
                                         <td><?= $value->jk_kar ?></td>
                                         <td><?= $value->tempat_tl ?></td>
-                                        <td><?= $value->alamat ?></td>
-                                        <td><?= $value->no_hp ?></td>
-                                        <td><?= $value->agama ?></td>
                                         <td><?= $value->divisi ?></td>
                                         <td><?= $value->jabatan ?></td>
-                                        <td><?= $value->mulai_bekerja ?></td>
                                         <td>
-                                            <a class="dropdown-item text-danger" href="<?= base_url('Admin/cKaryawan/hapus/' . $value->id_kar_daftar) ?>"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a class="btn btn-success" href="<?= base_url('Admin/cPenggajian/gaji_periode/' . $value->id_karyawan) ?>"><i class="fa fa-info"></i> View Gaji Periode</a>
 
                                         </td>
                                     </tr>
