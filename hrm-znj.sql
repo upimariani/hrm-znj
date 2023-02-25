@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Feb 2023 pada 14.26
+-- Waktu pembuatan: 25 Feb 2023 pada 03.17
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -41,7 +41,8 @@ CREATE TABLE `absensi` (
 --
 
 INSERT INTO `absensi` (`id_absensi`, `id_karyawan`, `id_penggajian`, `tgl_absensi`, `stat_absensi`, `time_absensi`) VALUES
-(1, 2, 0, '2023-02-16', 1, '16-02-2023 11:28:47');
+(1, 2, 2, '2023-02-16', 1, '16-02-2023 11:28:47'),
+(2, 2, 2, '2023-02-13', 1, '16-02-2023 11:28:47');
 
 -- --------------------------------------------------------
 
@@ -121,8 +122,18 @@ CREATE TABLE `penggajian` (
   `id_penggajian` int(11) NOT NULL,
   `tgl_gajian` varchar(20) NOT NULL,
   `tot_gajian` varchar(15) NOT NULL,
-  `status_gajian` int(11) NOT NULL
+  `status_gajian` int(11) NOT NULL,
+  `gaji_pokok` varchar(15) NOT NULL,
+  `uang_makan` varchar(15) NOT NULL,
+  `transport` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `penggajian`
+--
+
+INSERT INTO `penggajian` (`id_penggajian`, `tgl_gajian`, `tot_gajian`, `status_gajian`, `gaji_pokok`, `uang_makan`, `transport`) VALUES
+(2, '25-02-2023', '198000', 0, '150000', '10000', '14000');
 
 -- --------------------------------------------------------
 
@@ -197,7 +208,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `cuti`
@@ -221,7 +232,7 @@ ALTER TABLE `karyawan_daftar`
 -- AUTO_INCREMENT untuk tabel `penggajian`
 --
 ALTER TABLE `penggajian`
-  MODIFY `id_penggajian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penggajian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
