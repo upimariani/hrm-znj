@@ -13,18 +13,7 @@
 								<li class="breadcrumb-item active" aria-current="page">Penggajian</li>
 							</ol>
 						</nav>
-						<?php
-						if ($this->session->userdata('success')) {
-						?>
-							<div class="alert alert-success alert-dismissible fade show" role="alert">
-								<strong>Sukses!</strong> <?= $this->session->userdata('success') ?>
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-						<?php
-						}
-						?>
+						04
 					</div>
 				</div>
 			</div>
