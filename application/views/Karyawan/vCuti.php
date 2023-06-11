@@ -48,25 +48,46 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="table-plus">Gloria F. Mead</td>
-								<td>25</td>
-								<td>Sagittarius</td>
-								<td>2829 Trainer Avenue Peoria, IL 61602 </td>
+							<?php
+							foreach ($cuti as $key => $value) {
+							?>
+								<tr>
+									<td class="table-plus"><?= $value->tgl_cuti ?></td>
+									<td><?= $value->alasan_cuti ?></td>
+									<td><?= $value->jml_hari ?></td>
+									<td><?php if ($value->stat_cuti == '0') {
+										?>
+											<span class="badge badge-danger">Belum Dikonfirmasi</span>
+										<?php
+										} else {
+										?>
+											<span class="badge badge-success">Disetujui</span>
+										<?php
+										} ?>
+									</td>
 
-								<td>
-									<div class="dropdown">
-										<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-											<i class="fa fa-ellipsis-h"></i>
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>
-											<a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Edit</a>
-											<a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="fa fa-ellipsis-h"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right">
+												<?php
+												if ($value->stat_cuti == '0') {
+												?>
+													<a class="dropdown-item" data-toggle="modal" data-target="#edit<?= $value->id_cuti ?>" type="button"><i class="fa fa-pencil"></i> Edit</a>
+												<?php
+												}
+												?>
+												<a class="dropdown-item" href="<?= base_url('Karyawan/cCuti/delete/' . $value->id_cuti) ?>"><i class="fa fa-trash"></i> Delete</a>
+											</div>
 										</div>
-									</div>
-								</td>
-							</tr>
+									</td>
+								</tr>
+
+							<?php
+							}
+							?>
 
 						</tbody>
 					</table>
@@ -112,3 +133,40 @@
 		</div>
 	</div>
 </form>
+
+<?php
+foreach ($cuti as $key => $value) {
+?>
+	<form action="<?= base_url('Karyawan/cCuti/update_cuti/' . $value->id_cuti) ?>" method="POST">
+		<div class="modal fade bs-example-modal-sm" id="edit<?= $value->id_cuti ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">Form Pengajuan Cuti Karyawan</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Tanggal Cuti</label>
+							<input class="form-control" value="<?= $value->tgl_cuti ?>" name="tgl_cuti" type="date">
+						</div>
+						<div class="form-group">
+							<label>Jumlah Cuti</label>
+							<input class="form-control" value="<?= $value->jml_hari ?>" name="jml_cuti" type="number" placeholder="Masukkan Jumlah Hari">
+						</div>
+						<div class="form-group">
+							<label>Alasan Cuti</label>
+							<textarea class="form-control" name="alasan"><?= $value->alasan_cuti ?></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-danger">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+<?php
+}
+?>
