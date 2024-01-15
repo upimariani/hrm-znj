@@ -32,7 +32,24 @@
 			<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				<div class="clearfix mb-20">
 					<div class="pull-left">
-						<button class="btn btn-success mb-3" data-toggle="modal" data-target="#bd-example-modal-lg" type="button">Pengajuan Cuti Karyawan</button>
+
+						<p>Hallo Karyawan, Informasi Sisa Cuti Anda dalam Satu Tahun Ini adalah <span class="badge badge-warning"><?php
+																																	if ($informasi->hari == NULL) {
+																																		echo '12';
+																																	} else {
+																																		$sisa = 12 - $informasi->hari;
+																																	?>
+									<?= $sisa  ?>
+								<?php
+																																	}
+								?> hari</span> </p>
+						<?php
+						if ($informasi->hari == NULL || $sisa != '0') {
+						?>
+							<button class="btn btn-success mb-3" data-toggle="modal" data-target="#bd-example-modal-lg" type="button">Pengajuan Cuti Karyawan</button>
+						<?php
+						}
+						?>
 
 					</div>
 				</div>
@@ -103,7 +120,7 @@
 		</div>
 	</div>
 </div>
-<form action="<?= base_url('Karyawan/cCuti/add_cuti') ?>" method="POST">
+<form action="<?= base_url('Karyawan/cCuti/add_cuti/' . $id) ?>" method="POST">
 	<div class="modal fade bs-example-modal-sm" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">

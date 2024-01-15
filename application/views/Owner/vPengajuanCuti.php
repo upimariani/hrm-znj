@@ -31,43 +31,42 @@
 			<!-- Simple Datatable start -->
 			<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 
-				<div class="row">
-					<table class="data-table stripe hover nowrap">
-						<thead>
+
+				<table class="data-table stripe hover nowrap">
+					<thead>
+						<tr>
+							<th>Tanggal Cuti</th>
+							<th>Alasan Cuti</th>
+							<th>Jumlah Hari</th>
+							<th>Status Cuti</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						foreach ($cuti as $key => $value) {
+						?>
 							<tr>
-								<th>Tanggal Cuti</th>
-								<th>Alasan Cuti</th>
-								<th>Jumlah Hari</th>
-								<th>Status Cuti</th>
+								<td><?= $value->tgl_cuti ?></td>
+								<td><?= $value->alasan_cuti ?></td>
+								<td><?= $value->jml_hari ?></td>
+								<td><?php if ($value->stat_cuti == '0') {
+									?>
+										<a href="<?= base_url('Owner/cCuti/setujui/' . $value->id_cuti) ?>" class="btn btn-success">Disetujui</a>
+									<?php
+									} else {
+									?>
+										<span class="badge badge-success">Disetujui</span>
+									<?php
+									} ?>
+								</td>
 							</tr>
-						</thead>
-						<tbody>
-							<?php
-							foreach ($cuti as $key => $value) {
-							?>
-								<tr>
-									<td><?= $value->tgl_cuti ?></td>
-									<td><?= $value->alasan_cuti ?></td>
-									<td><?= $value->jml_hari ?></td>
-									<td><?php if ($value->stat_cuti == '0') {
-										?>
-											<a href="<?= base_url('Owner/cCuti/setujui/' . $value->id_cuti) ?>" class="btn btn-success">Disetujui</a>
-										<?php
-										} else {
-										?>
-											<span class="badge badge-success">Disetujui</span>
-										<?php
-										} ?>
-									</td>
-								</tr>
 
-							<?php
-							}
-							?>
+						<?php
+						}
+						?>
 
-						</tbody>
-					</table>
-				</div>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<div class="footer-wrap bg-white pd-20 mb-20 border-radius-5 box-shadow">

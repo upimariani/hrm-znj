@@ -19,6 +19,37 @@
 			<!-- Simple Datatable start -->
 			<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				<div class="row">
+					<div class="col-lg-6">
+						<!-- Select-2 Start -->
+						<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+							<div class="clearfix">
+								<div class="pull-left">
+									<h4 class="text-blue">Absensi</h4>
+									<p class="mb-30 font-14">Silahkan Absensi Hari Ini...</p>
+								</div>
+							</div>
+							<form action="<?= base_url('Karyawan/cAbsensi/absensi') ?>" method="POST">
+								<div class="form-group">
+									<label>Absensi</label>
+									<select name="absen" class="form-control">
+										<option value="">--Pilih Keterangan Absensi---</option>
+										<option value="1">Hadir</option>
+										<option value="2">Cuti</option>
+										<option value="3">Alpa</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Tanggal Absensi</label>
+									<input class="form-control" name="tgl" value="<?= date('d-m-y') ?>" type="date" placeholder="Masukkan Nama User">
+								</div>
+								<button class="btn btn-success"><i class="icon-copy fa fa-save" aria-hidden="true"></i> Simpan</button>
+								<a href="<?= base_url('Admin/cAbsensi') ?>" class="btn btn-danger">Kembali</a>
+							</form>
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
 					<table class="data-table stripe hover nowrap">
 						<thead>
 							<tr>

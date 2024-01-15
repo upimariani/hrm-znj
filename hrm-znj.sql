@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Apr 2023 pada 00.16
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 7.4.29
+-- Waktu pembuatan: 13 Jun 2023 pada 16.23
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,16 +34,17 @@ CREATE TABLE `absensi` (
   `id_penggajian` int(11) NOT NULL,
   `tgl_absensi` varchar(20) NOT NULL,
   `stat_absensi` int(11) NOT NULL,
-  `time_absensi` varchar(30) NOT NULL
+  `time_absensi` varchar(30) NOT NULL,
+  `approved` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `absensi`
 --
 
-INSERT INTO `absensi` (`id_absensi`, `id_karyawan`, `id_penggajian`, `tgl_absensi`, `stat_absensi`, `time_absensi`) VALUES
-(1, 2, 2, '2023-02-16', 1, '16-02-2023 11:28:47'),
-(2, 2, 2, '2023-02-13', 1, '16-02-2023 11:28:47');
+INSERT INTO `absensi` (`id_absensi`, `id_karyawan`, `id_penggajian`, `tgl_absensi`, `stat_absensi`, `time_absensi`, `approved`) VALUES
+(1, 2, 2, '2023-02-16', 1, '16-02-2023 11:28:47', 0),
+(2, 2, 2, '2023-02-13', 1, '16-02-2023 11:28:47', 1);
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,13 @@ CREATE TABLE `cuti` (
   `jml_hari` int(11) NOT NULL,
   `stat_cuti` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `cuti`
+--
+
+INSERT INTO `cuti` (`id_cuti`, `id_karyawan`, `tgl_cuti`, `alasan_cuti`, `jml_hari`, `stat_cuti`) VALUES
+(1, 2, '2023-06-14', 'sakit', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +223,7 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT untuk tabel `cuti`
 --
 ALTER TABLE `cuti`
-  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `karyawan`

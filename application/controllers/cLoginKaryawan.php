@@ -23,11 +23,11 @@ class cLoginKaryawan extends CI_Controller
 			if ($data) {
 				$id_karyawan = $data->id_kar_daftar;
 				$stat_daftar = $data->stat_daftar;
-				$id = $data->id_karyawan;
+				// $id = $data->id_karyawan;
 				$array = array(
 					'id_karyawan' => $id_karyawan,
 					'stat_daftar' => $stat_daftar,
-					'id' => $id
+					// 'id' => $id
 				);
 				$this->session->set_userdata($array);
 				redirect('Karyawan/cDashboard');
@@ -52,7 +52,8 @@ class cLoginKaryawan extends CI_Controller
 		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 		$this->form_validation->set_rules('no_hp', 'No Telepon', 'required');
-		$this->form_validation->set_rules('ttl', 'Tempat, Tanggal Lahir', 'required');
+		$this->form_validation->set_rules('tempat', 'Tempat Lahir', 'required');
+		$this->form_validation->set_rules('tanggal', 'Tanggal Lahir', 'required');
 		$this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraan', 'required');
 		$this->form_validation->set_rules('pend', 'Pendidikan Terakhir', 'required');
 		$this->form_validation->set_rules('agama', 'Agama', 'required');
@@ -62,7 +63,10 @@ class cLoginKaryawan extends CI_Controller
 
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('vDaftarKaryawan');
+			$data = array(
+				'error' => ''
+			);
+			$this->load->view('vDaftarKaryawan', $data);
 		} else {
 			$config['upload_path']          = './asset/surat';
 			$config['allowed_types']        = 'pdf';
@@ -80,7 +84,7 @@ class cLoginKaryawan extends CI_Controller
 				$data = array(
 					'nama_lengkap' => $this->input->post('nama'),
 					'jk_kar' => $this->input->post('jk'),
-					'tempat_tl' => $this->input->post('ttl'),
+					'tempat_tl' => $this->input->post('tempat') . ', ' . $this->input->post('tanggal'),
 					'kewarganegaraan' => $this->input->post('kewarganegaraan'),
 					'pend_terakhir' => $this->input->post('pend'),
 					'agama' => $this->input->post('agama'),

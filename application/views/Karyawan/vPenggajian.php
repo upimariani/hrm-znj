@@ -13,7 +13,7 @@
 								<li class="breadcrumb-item active" aria-current="page">Penggajian</li>
 							</ol>
 						</nav>
-						04
+
 					</div>
 				</div>
 			</div>

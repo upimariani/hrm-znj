@@ -42,6 +42,7 @@ class cPenggajian extends CI_Controller
 		$jumlah_hadir = $data_absensi_hadir['absensi_hadir']->jml;
 
 
+
 		$gaji_pokok = $this->input->post('gaji_pokok');
 		$transport = $this->input->post('transport');
 		$uang_makan = $this->input->post('uang_makan');
@@ -56,8 +57,8 @@ class cPenggajian extends CI_Controller
 			'tgl_gajian' => date('Y-m-d'),
 			'status_gajian' => '0',
 			'gaji_pokok' => $gaji_pokok,
-			'uang_makan' => $uang_makan,
-			'transport' => $transport,
+			'uang_makan' => $jml_makan,
+			'transport' => $jml_transport,
 			'tot_gajian' => $total_gaji
 		);
 		$this->mPenggajian->add_gaji($data);

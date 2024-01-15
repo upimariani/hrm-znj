@@ -28,6 +28,7 @@
 							</tr>
 						</table>
 						<button class="btn btn-success mb-3" data-toggle="modal" data-target="#bd-example-modal-lg" type="button">Masukkan gaji bulan ini</button>
+						<button onclick="window.print()" class="btn btn-warning mb-3" type="button">Print</button>
 						<?php
 						if ($this->session->userdata('success')) {
 						?>
@@ -64,7 +65,7 @@
 
 								$no = 1;
 								foreach ($gaji['gaji_periode'] as $key => $value) {
-									$cek_absen_hadir = $this->db->query("SELECT COUNT(id_absensi) as jml_hadir FROM `absensi` WHERE stat_absensi='1' AND id_penggajian='" . $value->id_penggajian . "';")->row();
+									$cek_absen_hadir = $this->db->query("SELECT COUNT(id_absensi) as jml_hadir FROM `absensi` WHERE stat_absensi='1' AND id_penggajian='" . $value->id_penggajian . "' AND approved='1';")->row();
 								?>
 									<tr>
 										<td><?= $no++ ?></td>

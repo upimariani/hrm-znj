@@ -73,6 +73,13 @@
 						</a>
 					</li>
 					<li>
+						<a href="<?= base_url('Owner/cCuti') ?>" class="dropdown-toggle no-arrow <?php if ($this->uri->segment(1) == 'Owner' && $this->uri->segment(2) == 'cCuti') {
+																										echo 'active';
+																									}  ?>">
+							<span class="fa fa-envelope-open"></span><span class="mtext">Pengajuan Cuti</span>
+						</a>
+					</li>
+					<li>
 						<a href="<?= base_url('cLogin/logout_user') ?>" class="dropdown-toggle no-arrow">
 							<span class="fa fa-sign-out"></span><span class="mtext">Logout</span>
 						</a>

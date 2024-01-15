@@ -13,8 +13,11 @@ class cPenggajian extends CI_Controller
 
 	public function index()
 	{
+		//mengambil data id karyawan
+		$id_karyawan = $this->db->query("SELECT * FROM `karyawan` WHERE id_kar_daftar='" . $this->session->userdata('id_karyawan') . "'")->row();
+		$id = $id_karyawan->id_karyawan;
 		$data = array(
-			'gaji' => $this->mPenggajian->gaji_karyawan($this->session->userdata('id'))
+			'gaji' => $this->mPenggajian->gaji_karyawan($id)
 		);
 		$this->load->view('Karyawan/Layout/head');
 		$this->load->view('Karyawan/Layout/sidebar');

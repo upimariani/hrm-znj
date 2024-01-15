@@ -16,10 +16,10 @@ class cCuti extends CI_Controller
 		$data = array(
 			'cuti' => $this->mCuti->select_all()
 		);
-		$this->load->view('Owner/Layout/head');
-		$this->load->view('Owner/Layout/sidebar');
+		$this->load->view('Admin/Layout/head');
+		$this->load->view('Admin/Layout/sidebar');
 		$this->load->view('Owner/vPengajuanCuti', $data);
-		$this->load->view('Owner/Layout/footer');
+		$this->load->view('Admin/Layout/footer');
 	}
 	public function setujui($id)
 	{

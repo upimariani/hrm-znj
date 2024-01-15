@@ -19,7 +19,6 @@ class mLogin extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('karyawan_daftar');
-		$this->db->join('karyawan', 'karyawan.id_kar_daftar = karyawan_daftar.id_kar_daftar', 'left');
 
 		$this->db->where(array(
 			'username_kar' => $username,

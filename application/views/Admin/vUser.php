@@ -38,7 +38,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<table class="data-table stripe hover nowrap">
+						<table id="myTable" class="stripe hover nowrap">
 							<thead>
 								<tr>
 									<th class="table-plus datatable-nosort">Nama User</th>

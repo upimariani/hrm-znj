@@ -38,18 +38,19 @@
 						</a>
 					</li>
 
-					<li>
-						<a href="<?= base_url('Owner/cCuti') ?>" class="dropdown-toggle no-arrow <?php if ($this->uri->segment(1) == 'Owner' && $this->uri->segment(2) == 'cCuti') {
-																										echo 'active';
-																									}  ?>">
-							<span class="fa fa-envelope-open"></span><span class="mtext">Pengajuan Cuti</span>
-						</a>
-					</li>
+
 					<li>
 						<a href="<?= base_url('Owner/cLaporan') ?>" class="dropdown-toggle no-arrow <?php if ($this->uri->segment(1) == 'Owner' && $this->uri->segment(2) == 'cLaporan') {
 																										echo 'active';
 																									}  ?>">
-							<span class="fa fa-book"></span><span class="mtext">Laporan</span>
+							<span class="fa fa-book"></span><span class="mtext">Laporan Gaji</span>
+						</a>
+					</li>
+					<li>
+						<a href="<?= base_url('Owner/cLaporanCuti') ?>" class="dropdown-toggle no-arrow <?php if ($this->uri->segment(1) == 'Owner' && $this->uri->segment(2) == 'cLaporanCuti') {
+																										echo 'active';
+																									}  ?>">
+							<span class="fa fa-book"></span><span class="mtext">Laporan Cuti Karyawan</span>
 						</a>
 					</li>
 					<li>

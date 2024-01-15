@@ -12,6 +12,8 @@
 								<li class="breadcrumb-item"><a href="index.php">Home</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Laporan Total Penggajian Per Periode</li>
 							</ol>
+							<a href="<?= base_url('Owner/cLaporan/cetak') ?>" class="btn btn-success ml-3 mb-3"><span class="fa fa-print"></span>Print</a>
+
 						</nav>
 						<?php
 						if ($this->session->userdata('success')) {
@@ -30,35 +32,34 @@
 			</div>
 			<!-- Simple Datatable start -->
 			<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-				<div class="row">
-					<table class="table">
-						<thead>
+
+				<table id="myTable" class="table">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Periode Gaji</th>
+							<th>Total Penggajian Karyawan</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						$no = 1;
+						foreach ($laporan as $key => $value) {
+						?>
 							<tr>
-								<th>No.</th>
-								<th>Periode Gaji</th>
-								<th>Total Penggajian Karyawan</th>
+								<td><?= $no++ ?></td>
+								<td><?= $value->tgl_gajian ?></td>
+								<td>Rp. <?= number_format($value->total) ?></td>
+
 							</tr>
-						</thead>
-						<tbody>
-							<?php
-							$no = 1;
-							foreach ($laporan as $key => $value) {
-							?>
-								<tr>
-									<td><?= $no++ ?></td>
-									<td><?= $value->tgl_gajian ?></td>
-									<td>Rp. <?= number_format($value->total) ?></td>
 
-								</tr>
+						<?php
+						}
+						?>
 
-							<?php
-							}
-							?>
+					</tbody>
+				</table>
 
-						</tbody>
-					</table>
-					<button class="btn btn-success ml-3" onclick="window.print()"><span class="fa fa-print"></span>Print</button>
-				</div>
 			</div>
 		</div>
 		<div class="footer-wrap bg-white pd-20 mb-20 border-radius-5 box-shadow">
